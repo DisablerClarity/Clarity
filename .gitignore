@@ -3,6 +3,12 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+/run
+/run/saves
+/.idea
+/run/saves
+/run/saves/MCP Development World
+/run
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -41,5 +47,3 @@ bin/
 ### Mac OS ###
 .DS_Store
 /run
-/run/saves
-/.idea

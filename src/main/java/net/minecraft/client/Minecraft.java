@@ -1,5 +1,8 @@
 package net.minecraft.client;
 
+import clarity.wtf.Clarity;
+import clarity.wtf.events.KeyPressEvent;
+import clarity.wtf.events.TickEvent;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -450,6 +453,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
             }
         });
         this.mouseHelper = new MouseHelper();
+        try {
+            Clarity.getInstance().init();
+        } catch (IllegalAccessError err) {
+            throw new RuntimeException(err);
+        }
         this.checkGLError("Pre startup");
         GlStateManager.enableTexture2D();
         GlStateManager.shadeModel(7425);
@@ -1002,6 +1010,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         for (int j = 0; j < this.timer.elapsedTicks; ++j)
         {
+            if(thePlayer != null && Clarity.getInstance().eventBus.hasSubscriberForEvent(TickEvent.class)) {
+                Clarity.getInstance().eventBus.post(new TickEvent());
+            }
             this.runTick();
         }
 
@@ -1793,6 +1804,9 @@ public class Minecraft implements IThreadListener, IPlayerUsage
                     }
                     else
                     {
+                        if(thePlayer != null && Clarity.getInstance().eventBus.hasSubscriberForEvent(KeyPressEvent.class)) {
+                            Clarity.getInstance().eventBus.post(new KeyPressEvent(k));
+                        }
                         if (k == 1)
                         {
                             this.displayInGameMenu();
