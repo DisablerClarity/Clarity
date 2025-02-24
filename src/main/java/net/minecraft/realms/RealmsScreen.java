@@ -13,16 +13,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class RealmsScreen
 {
-    public static final int SKIN_HEAD_U = 8;
-    public static final int SKIN_HEAD_V = 8;
-    public static final int SKIN_HEAD_WIDTH = 8;
-    public static final int SKIN_HEAD_HEIGHT = 8;
-    public static final int SKIN_HAT_U = 40;
-    public static final int SKIN_HAT_V = 8;
-    public static final int SKIN_HAT_WIDTH = 8;
-    public static final int SKIN_HAT_HEIGHT = 8;
-    public static final int SKIN_TEX_WIDTH = 64;
-    public static final int SKIN_TEX_HEIGHT = 64;
     protected Minecraft minecraft;
     public int width;
     public int height;

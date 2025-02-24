@@ -39,7 +39,11 @@ public class ModuleManager {
     }
     @Subscribe
     public void onKeyPress(KeyPressEvent event) {
-        getModuleByName("Speed").setEnabled(!getModuleByName("Speed").isEnabled());
+        for (Module module : modules.values()) {
+            if (module.getBind() == event.keybind) {
+                module.setEnabled(!module.isEnabled());
+            }
+        }
     }
 
     public static Module getModuleByName(String name) {

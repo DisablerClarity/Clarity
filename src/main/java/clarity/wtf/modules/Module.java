@@ -1,6 +1,7 @@
 package clarity.wtf.modules;
 
 
+import clarity.wtf.Clarity;
 import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
@@ -86,10 +87,14 @@ public class Module {
     }
 
     public void setEnabled(boolean enabled) {
+        if (this.enabled == enabled) return;
+
         this.enabled = enabled;
-        if(enabled){
+        if (enabled) {
+            Clarity.getInstance().eventBus.register(this);
             onEnable();
         } else {
+            Clarity.getInstance().eventBus.unregister(this);
             onDisable();
         }
     }
