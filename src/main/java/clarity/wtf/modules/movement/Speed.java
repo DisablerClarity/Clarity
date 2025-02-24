@@ -23,7 +23,6 @@ public class Speed extends Module {
     }
     @Subscribe
     public void onTick(TickEvent event) {
-        System.out.println("niggas");
         mc.thePlayer.motionY = 0;
-    }
+        }
 }

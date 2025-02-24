@@ -19,7 +19,6 @@ public class ModuleManager {
         registerModules();
         getModuleByName("ClickGUI").setBind(Keyboard.KEY_RSHIFT);
         getModuleByName("Speed").setEnabled(true);
-
     }
 
     private void registerModules() {
@@ -40,7 +39,7 @@ public class ModuleManager {
     }
     @Subscribe
     public void onKeyPress(KeyPressEvent event) {
-        System.out.println(getModuleByName("Speed").isEnabled());
+        getModuleByName("Speed").setEnabled(!getModuleByName("Speed").isEnabled());
     }
 
     public static Module getModuleByName(String name) {
@@ -50,8 +49,6 @@ public class ModuleManager {
                 .orElse(null);
     }
     public static Set<Module> getAllModules() {
-        TreeSet<Module> moduleSet = new TreeSet<>(Comparator.comparing(Module::getName));
-        moduleSet.addAll(modules.values());
-        return moduleSet;
+        return new TreeSet<>(Comparator.comparing(Module::getName));
     }
 }

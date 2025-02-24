@@ -15,7 +15,7 @@ public class Module {
     private int bind;
     private boolean enabled;
     public Moduledata data;
-
+    ModuleInfo info = getClass().getAnnotation(ModuleInfo.class);
     public Module(String name, String description, Category category) {
         this.name = name;
         this.description = description;
@@ -87,6 +87,11 @@ public class Module {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+        if(enabled){
+            onEnable();
+        } else {
+            onDisable();
+        }
     }
     public void onEnable() {}
     public void onDisable() {}
