@@ -18,7 +18,10 @@ public class ModuleManager {
         Clarity.getInstance().eventBus.register(this);
         registerModules();
         getModuleByName("ClickGUI").setBind(Keyboard.KEY_RSHIFT);
-        getModuleByName("Speed").setEnabled(true);
+        getModuleByName("Speed").setBind(Keyboard.KEY_O);
+        getModuleByName("Music").setBind(Keyboard.KEY_P);
+        getModuleByName("Lawnmower").setBind(Keyboard.KEY_K);
+        getModuleByName("Criticals").setBind(Keyboard.KEY_C);
     }
 
     private void registerModules() {
